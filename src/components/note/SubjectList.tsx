@@ -45,16 +45,16 @@ export default function SubjectList({
   const [addingSubfolderTo, setAddingSubfolderTo] = useState<string | null>(null);
   const [newSubfolderName, setNewSubfolderName] = useState('');
 
-  const handleAddFolder = () => {
+const handleAddFolder = async () => {
     if (!newFolderName.trim()) return;
-    onAddFolder(newFolderName.trim(), selectedIcon);
+    await onAddFolder(newFolderName.trim(), selectedIcon);
     setNewFolderName('');
     setShowAddFolder(false);
   };
 
-  const handleAddSubfolder = (folderId: string) => {
+const handleAddSubfolder = async (folderId: string) => {
     if (!newSubfolderName.trim()) return;
-    onAddSubfolder(folderId, newSubfolderName.trim());
+    await onAddSubfolder(folderId, newSubfolderName.trim());
     setNewSubfolderName('');
     setAddingSubfolderTo(null);
   };
